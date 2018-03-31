@@ -95,13 +95,14 @@ Dashboard
 	max-width: 100%;
 }
 
-/* Prevent DM Modal from closing when clicking the overlay */
+/* Not needed anymore. Added feature to preserve messages on close. - Prevent DM Modal from closing when clicking the overlay
 #dm_dialog {
 	pointer-events: none;
 }
 #dm_dialog-dialog {
 	pointer-events: auto;
 }
+*/
 
 /* Hide list-add activity */
 #stream-items-id .js-activity-list_member_added {
@@ -115,7 +116,7 @@ Dashboard
 
 /* Center the nav widgets */
 .global-nav .container {
-	max-width: 820px !important;
+	max-width: 880px !important;
 }
 @media screen and (max-width: 936px) {
 	.global-nav .container {

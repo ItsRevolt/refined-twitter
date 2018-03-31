@@ -4,11 +4,13 @@ function save_options() {
     var momentToggleDisplayKeybind = document.getElementById('momentToggleDisplayKeybind').value;
     var retweetToggleDisplay = document.getElementById('retweetToggleDisplay').checked;
     var promotedToggleDisplay = document.getElementById('promotedToggleDisplay').checked
+    var originalImageToggleDisplay = document.getElementById('originalImageToggleDisplay').checked
     chrome.storage.sync.set({
         'nightModeToggleKeybind': nightModeToggleKeybind,
         'momentToggleDisplayKeybind': momentToggleDisplayKeybind,
         'retweetToggleDisplay': retweetToggleDisplay,
-        'promotedToggleDisplay': promotedToggleDisplay
+        'promotedToggleDisplay': promotedToggleDisplay,
+        'originalImageToggleDisplay': originalImageToggleDisplay
     }, function() {
       // Update status to let user know options were saved.
       var status = document.getElementById('status');
@@ -27,12 +29,14 @@ function save_options() {
         'nightModeToggleKeybind',
         'momentToggleDisplayKeybind',
         'retweetToggleDisplay',
-        'promotedToggleDisplay'
+        'promotedToggleDisplay',
+        'originalImageToggleDisplay'
     ], function(items) {
       document.getElementById('nightModeToggleKeybind').value = items.nightModeToggleKeybind
       document.getElementById('momentToggleDisplayKeybind').value = items.momentToggleDisplayKeybind
       document.getElementById('retweetToggleDisplay').checked = items.retweetToggleDisplay
       document.getElementById('promotedToggleDisplay').checked = items.promotedToggleDisplay
+      document.getElementById('originalImageToggleDisplay').checked = items.originalImageToggleDisplay
     });
   }
   document.addEventListener('DOMContentLoaded', restore_options);

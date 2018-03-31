@@ -9,7 +9,9 @@
 		"storage",
 		"downloads",
 		"webRequest",
-		"webRequestBlocking",
+        "webRequestBlocking",
+        "cookies",
+        "*://twitter.com",
 		"https://pbs.twimg.com/"
 	],
 	"icons": {

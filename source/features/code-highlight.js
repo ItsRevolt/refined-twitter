@@ -43,7 +43,8 @@ function highlightCode(md) {
 		);
 	}
 
-	const highlightedCode = prism.highlight(code, prism.languages[selectedLang]);
+	var highlightedCode = prism.highlight(code, prism.languages[selectedLang]);
+
 
 	return (
 		<div class="refined-twitter_highlight">
