@@ -14,9 +14,9 @@ body {
 	display: none !important;
 }
 
-/* Remove "Moments" tab */
-#global-actions .moments {
-	display: none !important;
+/* Remove "Text" from nav */
+.nav>li>a .text {
+	display: none;
 }
 
 /* Promote layers to fix repaints */

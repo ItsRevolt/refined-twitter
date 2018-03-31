@@ -7,17 +7,37 @@ import codeHighlight from './features/code-highlight';
 import mentionHighlight from './features/mentions-highlight';
 import addLikesButtonNavBar from './features/likes-button-navbar';
 import keyboardShortcuts from './features/keyboard-shortcuts';
+var momentToggleDisplay
+var retweetToggleDisplay
+chrome.storage.sync.get([
+	'momentToggleDisplay',
+	'retweetToggleDisplay'
+], function(items) {
+	momentToggleDisplay = items.momentToggleDisplay
+	retweetToggleDisplay = items.retweetToggleDisplay
+})
 
 function cleanNavbarDropdown() {
-	$('#user-dropdown').find('[data-nav="all_moments"], [data-nav="ads"], [data-nav="promote-mode"], [data-nav="help_center"]').parent().hide();
+	$('#user-dropdown').find('[data-nav="ads"], [data-nav="promote-mode"], [data-nav="help_center"]').parent().hide();
+}
+
+function getMomentDisplay() {
+	const momentToggle = document.querySelector('.moments');
+	momentToggle.style.display = momentToggleDisplay
 }
 
 function hideLikeTweets() {
-	$('.tweet-context .Icon--heartBadge').parents('.js-stream-item').hide();
+	$('.tweet-context .Icon--heartBadge').parents('.js-stream-item').remove();
 }
 
 function hidePromotedTweets() {
 	$('.promoted-tweet').parent().remove();
+}
+
+function hideRetweets() {
+	if (retweetToggleDisplay == true) {
+		$('.tweet-context .Icon--retweeted').parents('.js-stream-item').remove();
+	}
 }
 
 async function init() {
@@ -30,6 +50,7 @@ async function init() {
 	document.documentElement.classList.add('refined-twitter');
 
 	safely(addLikesButtonNavBar);
+	safely(getMomentDisplay);
 
 	await domLoaded;
 	onDomReady();
@@ -68,6 +89,7 @@ function onDomReady() {
 			safely(hideLikeTweets);
 			safely(inlineInstagramPhotos);
 			safely(hidePromotedTweets);
+			safely(hideRetweets);
 		});
 	});
 

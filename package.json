@@ -1,87 +1,85 @@
 {
-	"scripts": {
-		"lint": "xo && stylelint source/*.css",
-		"test": "npm run lint && ava && npm run build",
-		"build": "webpack",
-		"watch": "webpack --watch",
-		"release:cws": "cd distribution && webstore upload --auto-publish",
-		"release": "run-s build update-version release:cws",
-		"update-version": "VERSION=$(utc-version); echo $VERSION; dot-json distribution/manifest.json version $VERSION"
-	},
-	"dependencies": {
-		"dom-chef": "^3.0.0",
-		"dom-loaded": "^1.0.0",
-		"element-ready": "^2.2.0",
-		"jquery": "^3.2.1",
-		"prismjs": "^1.9.0",
-		"select-dom": "^4.1.1",
-		"webext-options-sync": "^0.13.0",
-		"webextension-polyfill": "^0.2.1"
-	},
-	"devDependencies": {
-		"ava": "*",
-		"babel-core": "^6.26.0",
-		"babel-loader": "^7.1.2",
-		"babel-plugin-transform-react-jsx": "^6.24.1",
-		"chrome-webstore-upload-cli": "^1.0.0",
-		"copy-webpack-plugin": "^4.2.0",
-		"dot-json": "^1.0.3",
-		"npm-run-all": "^4.1.1",
-		"stylelint": "^8.3.1",
-		"stylelint-config-xo": "^0.4.0",
-		"utc-version": "^1.0.0",
-		"webpack": "^3.10.0",
-		"xo": "*"
-	},
-	"xo": {
-		"envs": [
-			"browser",
-			"jquery"
-		],
-		"rules": {
-			"import/no-unassigned-import": 0,
-			"no-unused-vars": [
-				2,
-				{
-					"varsIgnorePattern": "^h$"
-				}
-			]
-		},
-		"globals": [
-			"browser"
-		]
-	},
-	"ava": {
-		"files": [
-			"test/*.js"
-		],
-		"require": [
-			"babel-register"
-		]
-	},
-	"babel": {
-		"plugins": [
-			[
-				"transform-react-jsx",
-				{
-					"pragma": "h",
-					"useBuiltIns": true
-				}
-			]
-		]
-	},
-	"stylelint": {
-		"extends": "stylelint-config-xo",
-		"rules": {
-			"declaration-no-important": null,
-			"property-no-vendor-prefix": null,
-			"no-descending-specificity": null,
-			"property-blacklist": null,
-			"selector-class-pattern": null,
-			"selector-max-class": null,
-			"rule-empty-line-before": null,
-			"at-rule-empty-line-before": null,
-			"selector-max-compound-selectors": null
-		}
-	}
+  "scripts": {
+    "lint": "xo && stylelint source/*.css",
+    "test": "npm run lint && ava && npm run build",
+    "build": "webpack --mode production",
+    "watch": "webpack --watch"
+  },
+  "dependencies": {
+    "dom-chef": "^3.0.0",
+    "dom-loaded": "^1.0.0",
+    "element-ready": "^2.2.0",
+    "jquery": "^3.2.1",
+    "prismjs": "^1.9.0",
+    "select-dom": "^4.1.1",
+    "webext-options-sync": "^0.13.0",
+    "webextension-polyfill": "^0.2.1"
+  },
+  "devDependencies": {
+    "ava": "*",
+    "babel-core": "latest",
+    "babel-loader": "latest",
+    "babel-plugin-transform-react-jsx": "latest",
+    "chrome-webstore-upload-cli": "^1.0.0",
+    "copy-webpack-plugin": "latest",
+    "dot-json": "^1.0.3",
+    "npm-run-all": "^4.1.1",
+    "stylelint": "latest",
+    "stylelint-config-xo": "latest",
+    "utc-version": "latest",
+    "webpack": "latest",
+    "webpack-cli": "^2.0.13",
+    "xo": "*"
+  },
+  "xo": {
+    "envs": [
+      "browser",
+      "jquery"
+    ],
+    "rules": {
+      "import/no-unassigned-import": 0,
+      "no-unused-vars": [
+        2,
+        {
+          "varsIgnorePattern": "^h$"
+        }
+      ]
+    },
+    "globals": [
+      "browser"
+    ]
+  },
+  "ava": {
+    "files": [
+      "test/*.js"
+    ],
+    "require": [
+      "babel-register"
+    ]
+  },
+  "babel": {
+    "plugins": [
+      [
+        "transform-react-jsx",
+        {
+          "pragma": "h",
+          "useBuiltIns": true
+        }
+      ]
+    ]
+  },
+  "stylelint": {
+    "extends": "stylelint-config-xo",
+    "rules": {
+      "declaration-no-important": null,
+      "property-no-vendor-prefix": null,
+      "no-descending-specificity": null,
+      "property-blacklist": null,
+      "selector-class-pattern": null,
+      "selector-max-class": null,
+      "rule-empty-line-before": null,
+      "at-rule-empty-line-before": null,
+      "selector-max-compound-selectors": null
+    }
+  }
 }

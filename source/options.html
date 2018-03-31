@@ -13,11 +13,19 @@
 		margin-top: 2em;
 	}
 </style>
-<form id="options-form">
-	<h2>Information</h2>
-	<p>
-		No options yet.
-	</p>
-</form>
+	<h2>Options</h2>
+	<h3>Keybinds</h3>
+	<p>You can view your shortcuts on Twitter by pressing 'shift + ?'</p>
+	<h4>Night Mode</h4>
+	<input id="nightModeToggleKeybind">
+	<h4>Moment Tab</h4>
+	<input id="momentToggleDisplayKeybind">
+	<h4>Moment Tab</h4>
+	<h3>Display</h3>
+	<h4>Hide Context tweets</h4>
+	<h5>Hide retweets</h5>
+	<input type="checkbox" id="retweetToggleDisplay">
+	<div id="status"></div>
+	<button id="save">Save</button>
 <script src="browser-polyfill.min.js"></script>
 <script src="options.js"></script>

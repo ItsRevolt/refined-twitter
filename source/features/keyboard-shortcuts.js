@@ -1,7 +1,32 @@
+var momentToggleDisplayKeybind
+var nightModeToggleKeybind
+chrome.storage.sync.get([
+	'nightModeToggleKeybind',
+	'momentToggleDisplayKeybind'
+], function(items) {
+		momentToggleDisplayKeybind = items.momentToggleDisplayKeybind
+		nightModeToggleKeybind = items.nightModeToggleKeybind
+})
 const toggleNightMode = () => {
 	const nightmodeToggle = document.querySelector('.nightmode-toggle');
 	if (nightmodeToggle) {
 		nightmodeToggle.click();
+	}
+};
+const toggleMoment = () => {
+	const momentToggle = document.querySelector('.moments');
+	if (momentToggle) {
+		if (momentToggle.style.display !== "none") {
+			momentToggle.style.display = "none"
+			chrome.storage.sync.set({
+				'momentToggleDisplay': 'none',
+			})
+		} else {
+			momentToggle.style.display = "block"
+			chrome.storage.sync.set({
+				'momentToggleDisplay': 'block',
+			})
+		}
 	}
 };
 
@@ -14,9 +39,16 @@ export default () => {
 				{
 					keys: [
 						'Ctrl',
-						'm'
+						nightModeToggleKeybind
 					],
 					description: 'Toggle Night Mode'
+				},
+				{
+					keys: [
+						'Ctrl',
+						momentToggleDisplayKeybind
+					],
+					description: 'Toggle Moment Tab'
 				}
 			]
 		},
@@ -35,8 +67,11 @@ export default () => {
 	document.addEventListener('keydown', event => {
 		const keyName = event.key;
 		switch (keyName) {
-			case event.ctrlKey && 'm':
+			case event.ctrlKey && nightModeToggleKeybind:
 				toggleNightMode();
+				break;
+			case event.ctrlKey && momentToggleDisplayKeybind:
+				toggleMoment();
 				break;
 			default:
 				break;

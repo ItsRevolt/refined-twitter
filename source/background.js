@@ -1,5 +1,14 @@
 import OptionsSync from 'webext-options-sync';
 
+chrome.runtime.onInstalled.addListener(function(details){
+    if(details.reason == "install"){
+	chrome.storage.sync.set({
+	'nightModeToggleKeybind': 'b',
+	'momentToggleDisplayKeybind': 'm',
+	'retweetToggleDisplay': 'true'
+})
+	}
+})
 // Define defaults
 new OptionsSync().define({
 	defaults: {},
