@@ -9,12 +9,15 @@ import addLikesButtonNavBar from './features/likes-button-navbar';
 import keyboardShortcuts from './features/keyboard-shortcuts';
 var momentToggleDisplay
 var retweetToggleDisplay
+var promotedToggleDisplay
 chrome.storage.sync.get([
 	'momentToggleDisplay',
-	'retweetToggleDisplay'
+	'retweetToggleDisplay',
+	'promotedToggleDisplay'
 ], function(items) {
 	momentToggleDisplay = items.momentToggleDisplay
 	retweetToggleDisplay = items.retweetToggleDisplay
+	promotedToggleDisplay - items.promotedToggleDisplay
 })
 
 function cleanNavbarDropdown() {
@@ -31,7 +34,9 @@ function hideLikeTweets() {
 }
 
 function hidePromotedTweets() {
+	if (promotedToggleDisplay == true) {
 	$('.promoted-tweet').parent().remove();
+	}
 }
 
 function hideRetweets() {

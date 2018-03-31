@@ -5,17 +5,11 @@ chrome.runtime.onInstalled.addListener(function(details){
 	chrome.storage.sync.set({
 	'nightModeToggleKeybind': 'b',
 	'momentToggleDisplayKeybind': 'm',
-	'retweetToggleDisplay': 'true'
+	'retweetToggleDisplay': 'false',
+	'promotedToggleDisplay': 'true'
 })
 	}
 })
-// Define defaults
-new OptionsSync().define({
-	defaults: {},
-	migrations: [
-		OptionsSync.migrations.removeUnused
-	]
-});
 
 // Fix the extension when right-click saving a tweet image
 browser.downloads.onDeterminingFilename.addListener((item, suggest) => {

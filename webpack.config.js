@@ -22,7 +22,7 @@ module.exports = {
 		}, {
 			from: 'node_modules/webextension-polyfill/dist/browser-polyfill.min.js'
 		}, {
-			from: 'node_modules/jquery/dist/jquery.slim.min.js'
+			from: 'node_modules/zepto/dist/zepto.min.js'
 		}]),
 		new ZipPlugin({
 			filename: 'Refined Twitter-Forked',
