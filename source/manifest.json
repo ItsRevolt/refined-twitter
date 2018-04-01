@@ -9,7 +9,9 @@
 		"storage",
 		"downloads",
 		"webRequest",
-		"webRequestBlocking",
+        "webRequestBlocking",
+        "cookies",
+        "*://twitter.com",
 		"https://pbs.twimg.com/"
 	],
 	"icons": {
@@ -36,7 +38,7 @@
 				"style/code-highlight.css"
 			],
 			"js": [
-				"jquery.slim.min.js",
+				"zepto.min.js",
 				"browser-polyfill.min.js",
 				"content.js"
 			]
