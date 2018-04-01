@@ -11,7 +11,7 @@
 		"webRequest",
         "webRequestBlocking",
         "cookies",
-        "*://twitter.com",
+        "*://twitter.com/",
 		"https://pbs.twimg.com/"
 	],
 	"icons": {
