@@ -2,7 +2,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-var ZipPlugin = require('zip-webpack-plugin');
 
 module.exports = {
 	entry: {
@@ -23,11 +22,7 @@ module.exports = {
 			from: 'node_modules/webextension-polyfill/dist/browser-polyfill.min.js'
 		}, {
 			from: 'node_modules/zepto/dist/zepto.min.js'
-		}]),
-		new ZipPlugin({
-			filename: 'Refined Twitter-Forked',
-			extension: 'crx'
-		})
+		}])
 	],
 	output: {
 		path: path.join(__dirname, 'distribution'),
