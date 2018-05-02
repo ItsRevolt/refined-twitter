@@ -1,5 +1,5 @@
 import domLoaded from 'dom-loaded';
-import {observeEl, safeElementReady, safely} from './libs/utils';
+import { observeEl, safeElementReady, safely } from './libs/utils';
 import autoLoadNewTweets from './features/auto-load-new-tweets';
 import inlineInstagramPhotos from './features/inline-instagram-photos';
 import userChoiceColor from './features/user-choice-color';
@@ -7,7 +7,7 @@ import codeHighlight from './features/code-highlight';
 import mentionHighlight from './features/mentions-highlight';
 import addLikesButtonNavBar from './features/likes-button-navbar';
 import keyboardShortcuts from './features/keyboard-shortcuts';
-import onDMDialogOpen, {getConversationId} from './features/preserve-text-messages';
+import onDMDialogOpen, { getConversationId } from './features/preserve-text-messages';
 var momentToggleDisplay
 var retweetToggleDisplay
 var promotedToggleDisplay
@@ -21,7 +21,7 @@ chrome.storage.sync.get([
 	'followToggleDisplay',
 	'trendsBoxToggleDisplay',
 	'uselessNotifsToggleDisplay'
-], function(items) {
+], function (items) {
 	momentToggleDisplay = items.momentToggleDisplay
 	retweetToggleDisplay = items.retweetToggleDisplay
 	promotedToggleDisplay = items.promotedToggleDisplay
@@ -45,7 +45,7 @@ function hideLikeTweets() {
 
 function hidePromotedTweets() {
 	if (promotedToggleDisplay == true) {
-	$('.promoted-tweet').parent().remove();
+		$('.promoted-tweet').parent().remove();
 	}
 }
 
@@ -75,7 +75,7 @@ function hideUselessNotifs() {
 }
 
 function onDMDelete() {
-		observeEl('#dm_dialog', async mutations => {
+	observeEl('#dm_dialog', async mutations => {
 		const savedMessages = await browser.storage.local.get();
 		const pendingRemoval = [];
 
@@ -95,7 +95,7 @@ function onDMDelete() {
 		}
 
 		await Promise.all(pendingRemoval);
-	}, {childList: true, subtree: true, attributes: true});
+	}, { childList: true, subtree: true, attributes: true });
 }
 
 async function init() {
@@ -115,7 +115,7 @@ async function init() {
 }
 
 function onRouteChange(cb) {
-	observeEl('#doc', cb, {attributes: true});
+	observeEl('#doc', cb, { attributes: true });
 }
 
 function onNewTweets(cb) {
@@ -126,11 +126,11 @@ function onSingleTweetOpen(cb) {
 	observeEl('body', mutations => {
 		for (const mutation of mutations) {
 			if (mutation.target.classList.contains('overlay-enabled')) {
-				observeEl('#permalink-overlay', cb, {attributes: true, subtree: true});
+				observeEl('#permalink-overlay', cb, { attributes: true, subtree: true });
 				break;
 			}
 		}
-	}, {attributes: true});
+	}, { attributes: true });
 }
 
 function onDomReady() {

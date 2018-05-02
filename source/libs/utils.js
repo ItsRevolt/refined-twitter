@@ -1,4 +1,4 @@
-import {h} from 'dom-chef';
+import { h } from 'dom-chef';
 import select from 'select-dom';
 import elementReady from 'element-ready';
 import domLoaded from 'dom-loaded';
@@ -23,7 +23,7 @@ export const safeElementReady = selector => {
 	return waiting.catch(() => null);
 };
 
-export const observeEl = (el, listener, options = {childList: true}) => {
+export const observeEl = (el, listener, options = { childList: true }) => {
 	if (typeof el === 'string') {
 		el = select(el);
 	}
@@ -51,13 +51,13 @@ export const getUsername = () => document.querySelector('.DashUserDropdown-userI
 
 export const isModalOpen = () => {
 	function isVis(ele) {
-		if(ele.css('display')!='none' && ele.css('visibility')!='hidden' && ele.height()>0) {
-			return(true);
+		if (ele.css('display') != 'none' && ele.css('visibility') != 'hidden' && ele.height() > 0) {
+			return (true);
 		} else {
-			return(false);
+			return (false);
 		}
 	}
-	
+
 	const hasPermalinkOverlay = isVis($('#permalink-overlay'))
 	const isDMModalOpen = isVis($('#dm_dialog'))
 

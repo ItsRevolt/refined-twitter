@@ -1,7 +1,5 @@
 {
   "scripts": {
-    "lint": "xo && stylelint source/*.css",
-    "test": "npm run lint && ava && npm run build",
     "build": "webpack --mode production",
     "watch": "webpack --watch"
   },
@@ -16,7 +14,6 @@
     "webextension-polyfill": "^0.2.1"
   },
   "devDependencies": {
-    "ava": "*",
     "babel-core": "latest",
     "babel-loader": "latest",
     "babel-plugin-transform-react-jsx": "latest",
@@ -24,39 +21,9 @@
     "copy-webpack-plugin": "latest",
     "dot-json": "^1.0.3",
     "npm-run-all": "^4.1.1",
-    "stylelint": "latest",
-    "stylelint-config-xo": "latest",
-    "utc-version": "latest",
     "webpack": "latest",
     "webpack-build-notifier": "^0.1.25",
-    "webpack-cli": "^2.0.13",
-    "xo": "*"
-  },
-  "xo": {
-    "envs": [
-      "browser",
-      "zepto"
-    ],
-    "rules": {
-      "import/no-unassigned-import": 0,
-      "no-unused-vars": [
-        2,
-        {
-          "varsIgnorePattern": "^h$"
-        }
-      ]
-    },
-    "globals": [
-      "browser"
-    ]
-  },
-  "ava": {
-    "files": [
-      "test/*.js"
-    ],
-    "require": [
-      "babel-register"
-    ]
+    "webpack-cli": "^2.0.13"
   },
   "babel": {
     "plugins": [
@@ -68,19 +35,5 @@
         }
       ]
     ]
-  },
-  "stylelint": {
-    "extends": "stylelint-config-xo",
-    "rules": {
-      "declaration-no-important": null,
-      "property-no-vendor-prefix": null,
-      "no-descending-specificity": null,
-      "property-blacklist": null,
-      "selector-class-pattern": null,
-      "selector-max-class": null,
-      "rule-empty-line-before": null,
-      "at-rule-empty-line-before": null,
-      "selector-max-compound-selectors": null
-    }
   }
 }
