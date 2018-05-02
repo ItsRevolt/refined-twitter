@@ -14,6 +14,7 @@ npm run build  # Build the extension code so it's ready for the browser
 ```
 
 Once built, load it in the browser of your choice:
+**Only chrome has been tested by me**
 
 <table>
 	<tr>
@@ -48,6 +49,7 @@ Once built, load it in the browser of your choice:
 - Hides "Promoted" tweets in the stream. `Configurable`
 - Hides "Liked" tweets in the stream. `Configurable`
 - Hides "Retweeted" tweets in the stream. `Configurable`
+- Hides "Trends for you" box. `Configurable`
 - Auto-loads new tweets in the stream if you're scrolled to the top. No more clicking `See 3 new Tweets`!
 - [Embeds the photo from Instagram links directly in the tweet.](https://user-images.githubusercontent.com/170270/34315380-12d52994-e77f-11e7-8e23-27b76aee4df2.png)
 - [Syntax highlighting in code blocks.](https://github.com/sindresorhus/refined-twitter/issues/37)
@@ -55,8 +57,10 @@ Once built, load it in the browser of your choice:
 - [Removes the annoying suggestions in the search popover.](https://user-images.githubusercontent.com/170270/33800304-70198358-dd3d-11e7-9870-477a44f74f4d.png)
 - [Adds a `Likes` button to the main navbar](https://user-images.githubusercontent.com/14620121/35988497-ace9f93e-0ce5-11e8-8675-17e6ee38cd99.png)
 - Hides "Notifications" activity for new followers and being added to a list.
-- Prevents DM modal from closing when (accidentally) clicking outside the modal.
+- Clicking bell brings to mentions and not notifications by default `Configurable`
+- Saves message drafts automatically
 - Highlight your mentions in the stream
+- **Plus More!**
 
 <img src="media/screenshot.gif" width="1272">
 

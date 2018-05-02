@@ -69,6 +69,8 @@ Dashboard
 .module.Footer {
 	display: none !important;
 }
+
+/* Center Timeline */
 .content-main {
 	margin-left: auto;
 	margin-right: auto;
@@ -90,11 +92,6 @@ Dashboard
 
 /* Hide list-add activity */
 #stream-items-id .js-activity-list_member_added {
-	display: none;
-}
-
-/* Hide follow activity */
-#stream-items-id .js-activity-follow {
 	display: none;
 }
 

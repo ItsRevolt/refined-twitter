@@ -7,6 +7,7 @@ function save_options() {
     var followToggleDisplay = document.getElementById('followToggleDisplay').checked
     var originalImageToggleDisplay = document.getElementById('originalImageToggleDisplay').checked
     var trendsBoxToggleDisplay = document.getElementById('trendsBoxToggleDisplay').checked
+    var uselessNotifsToggleDisplay = document.getElementById('uselessNotifsToggleDisplay').checked
     chrome.storage.sync.set({
         'nightModeToggleKeybind': nightModeToggleKeybind,
         'momentToggleDisplayKeybind': momentToggleDisplayKeybind,
@@ -14,7 +15,8 @@ function save_options() {
         'promotedToggleDisplay': promotedToggleDisplay,
         'followToggleDisplay': followToggleDisplay,
         'originalImageToggleDisplay': originalImageToggleDisplay,
-        'trendsBoxToggleDisplay': trendsBoxToggleDisplay
+        'trendsBoxToggleDisplay': trendsBoxToggleDisplay,
+        'uselessNotifsToggleDisplay': uselessNotifsToggleDisplay
     }, function() {
       // Update status to let user know options were saved.
       var status = document.getElementById('status');
@@ -36,7 +38,8 @@ function save_options() {
         'promotedToggleDisplay',
         'followToggleDisplay',
         'originalImageToggleDisplay',
-        'trendsBoxToggleDisplay'
+        'trendsBoxToggleDisplay',
+        'uselessNotifsToggleDisplay'
     ], function(items) {
       document.getElementById('nightModeToggleKeybind').value = items.nightModeToggleKeybind
       document.getElementById('momentToggleDisplayKeybind').value = items.momentToggleDisplayKeybind
@@ -45,6 +48,7 @@ function save_options() {
       document.getElementById('followToggleDisplay').checked = items.followToggleDisplay
       document.getElementById('originalImageToggleDisplay').checked = items.originalImageToggleDisplay
       document.getElementById('trendsBoxToggleDisplay').checked = items.trendsBoxToggleDisplay
+      document.getElementById('uselessNotifsToggleDisplay').checked = items.uselessNotifsToggleDisplay
     });
   }
   document.addEventListener('DOMContentLoaded', restore_options);

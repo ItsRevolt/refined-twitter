@@ -13,18 +13,21 @@ var retweetToggleDisplay
 var promotedToggleDisplay
 var trendsBoxToggleDisplay
 var followToggleDisplay
+var uselessNotifsToggleDisplay
 chrome.storage.sync.get([
 	'momentToggleDisplay',
 	'retweetToggleDisplay',
 	'promotedToggleDisplay',
 	'followToggleDisplay',
-	'trendsBoxToggleDisplay'
+	'trendsBoxToggleDisplay',
+	'uselessNotifsToggleDisplay'
 ], function(items) {
 	momentToggleDisplay = items.momentToggleDisplay
 	retweetToggleDisplay = items.retweetToggleDisplay
 	promotedToggleDisplay = items.promotedToggleDisplay
 	followToggleDisplay = items.followToggleDisplay
 	trendsBoxToggleDisplay = items.trendsBoxToggleDisplay
+	uselessNotifsToggleDisplay = items.uselessNotifsToggleDisplay
 })
 
 function cleanNavbarDropdown() {
@@ -63,6 +66,14 @@ function hideFollows() {
 		$('.js-activity-follow').remove()
 	}
 }
+
+function hideUselessNotifs() {
+	if (uselessNotifsToggleDisplay == true) {
+		$('li.people.notifications').children('a').attr('href', 'https://twitter.com/mentions')
+		console.log($('li.people.notifications').children('a'))
+	}
+}
+
 function onDMDelete() {
 		observeEl('#dm_dialog', async mutations => {
 		const savedMessages = await browser.storage.local.get();
@@ -126,6 +137,7 @@ function onDomReady() {
 	safely(cleanNavbarDropdown);
 	safely(keyboardShortcuts);
 	safely(hideTrendsBox);
+	safely(hideUselessNotifs);
 
 	onRouteChange(() => {
 		safely(autoLoadNewTweets);

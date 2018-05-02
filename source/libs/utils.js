@@ -50,7 +50,16 @@ export const domify = html => {
 export const getUsername = () => document.querySelector('.DashUserDropdown-userInfo .username > b').textContent;
 
 export const isModalOpen = () => {
-	const hasPermalinkOverlay = $('#permalink-overlay').is(':visible');
-	const isDMModalOpen = $('#dm_dialog').is(':visible');
+	function isVis(ele) {
+		if(ele.css('display')!='none' && ele.css('visibility')!='hidden' && ele.height()>0) {
+			return(true);
+		} else {
+			return(false);
+		}
+	}
+	
+	const hasPermalinkOverlay = isVis($('#permalink-overlay'))
+	const isDMModalOpen = isVis($('#dm_dialog'))
+
 	return hasPermalinkOverlay || isDMModalOpen;
 };
