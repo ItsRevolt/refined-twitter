@@ -1,17 +1,20 @@
 {
 	"name": "Revolt Twitter",
-	"version": "0.1",
+	"version": "0.2",
 	"description": "A fork of Refined Twitter. Simplifies the Twitter interface and adds useful features.",
 	"homepage_url": "https://github.com/ItsRevolt/refined-twitter",
 	"manifest_version": 2,
 	"minimum_chrome_version": "62",
+	"browser_action": {
+		"default_title": "Refined Twitter",
+		"default_popup": "popup.html"
+	  },
 	"permissions": [
 		"storage",
 		"downloads",
 		"webRequest",
-        "webRequestBlocking",
-        "cookies",
-        "*://twitter.com",
+		"webRequestBlocking",
+		"contextMenus",
 		"https://pbs.twimg.com/"
 	],
 	"icons": {

@@ -7,7 +7,9 @@ chrome.runtime.onInstalled.addListener(function(details){
 	'momentToggleDisplayKeybind': 'm',
 	'retweetToggleDisplay': 'false',
 	'promotedToggleDisplay': 'true',
-	'originalImageToggleDisplay': 'true'
+	'followToggleDisplay': 'true',
+	'originalImageToggleDisplay': 'true',
+	'trendsBoxToggleDisplay': 'false'
 })
 	}
 })
@@ -22,10 +24,6 @@ browser.downloads.onDeterminingFilename.addListener((item, suggest) => {
 	suggest({
 		filename: item.filename.replace(/\.(jpg|png)_(large|orig)$/, '.$1')
 	});
-});
-
-chrome.cookies.get({"url": "https://twitter.com", "name": "auth_token"}, function(cookie) {
-	
 });
 
 if (originalImageToggleDisplay == true) {

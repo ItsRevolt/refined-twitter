@@ -11,14 +11,20 @@ import onDMDialogOpen, {getConversationId} from './features/preserve-text-messag
 var momentToggleDisplay
 var retweetToggleDisplay
 var promotedToggleDisplay
+var trendsBoxToggleDisplay
+var followToggleDisplay
 chrome.storage.sync.get([
 	'momentToggleDisplay',
 	'retweetToggleDisplay',
-	'promotedToggleDisplay'
+	'promotedToggleDisplay',
+	'followToggleDisplay',
+	'trendsBoxToggleDisplay'
 ], function(items) {
 	momentToggleDisplay = items.momentToggleDisplay
 	retweetToggleDisplay = items.retweetToggleDisplay
-	promotedToggleDisplay - items.promotedToggleDisplay
+	promotedToggleDisplay = items.promotedToggleDisplay
+	followToggleDisplay = items.followToggleDisplay
+	trendsBoxToggleDisplay = items.trendsBoxToggleDisplay
 })
 
 function cleanNavbarDropdown() {
@@ -40,9 +46,21 @@ function hidePromotedTweets() {
 	}
 }
 
+function hideTrendsBox() {
+	if (trendsBoxToggleDisplay == true) {
+		$('.module.trends').remove()
+	}
+}
+
 function hideRetweets() {
 	if (retweetToggleDisplay == true) {
 		$('.tweet-context .Icon--retweeted').parents('.js-stream-item').remove();
+	}
+}
+
+function hideFollows() {
+	if (followToggleDisplay == true) {
+		$('.js-activity-follow').remove()
 	}
 }
 function onDMDelete() {
@@ -107,6 +125,7 @@ function onSingleTweetOpen(cb) {
 function onDomReady() {
 	safely(cleanNavbarDropdown);
 	safely(keyboardShortcuts);
+	safely(hideTrendsBox);
 
 	onRouteChange(() => {
 		safely(autoLoadNewTweets);
@@ -119,6 +138,7 @@ function onDomReady() {
 			safely(inlineInstagramPhotos);
 			safely(hidePromotedTweets);
 			safely(hideRetweets);
+			safely(hideFollows);
 		});
 	});
 
