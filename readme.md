@@ -5,7 +5,7 @@
 > Browser extension that simplifies the Twitter interface and adds useful features
 
 ## Features & Install
-Please visit https://redefined-twitter-fork.netlify.com/ for features and install guide :heart:
+Please visit https://refined-twitter-fork.netlify.com/ for features and install guide :heart:
 
 ## Contribute
 
