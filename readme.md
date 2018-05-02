@@ -9,7 +9,7 @@ Please follow the below steps:
 ```sh
 git clone https://github.com/ItsRevolt/refined-twitter/
 cd refined-twitter
-npm i    # Install dev dependencies
+npm install    # Install dev dependencies
 npm run build  # Build the extension code so it's ready for the browser
 ```
 
