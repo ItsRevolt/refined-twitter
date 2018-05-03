@@ -1,0 +1,127 @@
+/**
+
+Global
+
+*/
+
+/* Use system fonts */
+body {
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol' !important;
+}
+
+/* Remove navbar logo */
+.bird-topbar-etched {
+	display: none !important;
+}
+
+/* Remove "Text" from nav */
+.nav>li>a .text {
+	display: none;
+}
+
+/* Promote layers to fix repaints */
+#permalink-overlay,
+.RichEditor-tempTextArea {
+	will-change: transform;
+}
+
+/* Contain layout for better performance */
+.stream-item,
+.Gallery,
+.topbar {
+	contain: layout style; /* We don't contain `content` as it breaks fullscreening videos */
+}
+
+/* Remove annoying suggestions in the Search popover */
+#global-nav-search .typeahead-topics {
+	display: none !important;
+}
+#global-nav-search .typeahead-topics + ul {
+	border: 0 !important;
+}
+
+/* Highlight your mentions in the stream */
+body:not(.NotificationsPage) .tweet.refined-twitter_mention:not(.permalink-tweet) {
+	background-color: rgba(var(--refined-twitter_bgcolor-values), 0.1);
+}
+
+body:not(.NotificationsPage) .tweet.refined-twitter_mention:not(.permalink-tweet):hover {
+	background-color: rgba(var(--refined-twitter_bgcolor-values), 0.2);
+}
+
+/**
+
+Dashboard
+
+*/
+
+/* Remove the profile box */
+.module.DashboardProfileCard {
+	display: none !important;
+}
+
+/* Remove the "Who to follow" box */
+.module.wtf-module {
+	display: none !important;
+}
+
+/* Remove the footer box */
+.module.Footer {
+	display: none !important;
+}
+
+/* Center Timeline */
+.content-main {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Custom inline image element */
+.AdaptiveMedia .refined-twitter_instagram-inline {
+	max-width: 100%;
+}
+
+/* Not needed anymore. Added feature to preserve messages on close. - Prevent DM Modal from closing when clicking the overlay
+#dm_dialog {
+	pointer-events: none;
+}
+#dm_dialog-dialog {
+	pointer-events: auto;
+}
+*/
+
+/* Hide list-add activity */
+#stream-items-id .js-activity-list_member_added {
+	display: none;
+}
+
+/* Center the nav widgets */
+.global-nav .container {
+	max-width: 880px !important;
+}
+@media screen and (max-width: 936px) {
+	.global-nav .container {
+		max-width: 590px !important;
+	}
+}
+
+/* Adjust pushstate spinner for the above nav max-width change */
+.pushstate-spinner {
+	position: absolute;
+	left: 0 !important;
+	margin-left: -40px !important;
+}
+@media screen and (max-width: 936px) {
+	.pushstate-spinner {
+		left: 43% !important;
+		margin-left: -10px !important;
+	}
+}
+/* Style text in backticks */
+code.refined-twitter_markdown {
+	font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+	background-color: rgba(27, 31, 35, 0.05);
+	padding: 0.1em 0.4em;
+	margin: 0;
+	font-size: 90%;
+}
