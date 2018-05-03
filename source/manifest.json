@@ -1,6 +1,6 @@
 {
 	"name": "Revolt Twitter",
-	"version": "0.2.2",
+	"version": "0.2.3",
 	"description": "A fork of Refined Twitter. Simplifies the Twitter interface and adds useful features.",
 	"homepage_url": "https://github.com/ItsRevolt/refined-twitter",
 	"manifest_version": 2,

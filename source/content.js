@@ -7,6 +7,7 @@ import codeHighlight from './features/code-highlight';
 import mentionHighlight from './features/mentions-highlight';
 import addLikesButtonNavBar from './features/likes-button-navbar';
 import keyboardShortcuts from './features/keyboard-shortcuts';
+import renderInlineCode from './features/inline-code';
 import onDMDialogOpen, { getConversationId } from './features/preserve-text-messages';
 var momentToggleDisplay
 var retweetToggleDisplay
@@ -125,8 +126,12 @@ function onNewTweets(cb) {
 function onSingleTweetOpen(cb) {
 	observeEl('body', mutations => {
 		for (const mutation of mutations) {
-			if (mutation.target.classList.contains('overlay-enabled')) {
+			const { classList } = mutation.target;
+			if (classList.contains('overlay-enabled')) {
 				observeEl('#permalink-overlay', cb, { attributes: true, subtree: true });
+				break;
+			} else if (classList.contains('modal-enabled')) {
+				observeEl('#global-tweet-dialog', cb, { attributes: true, subtree: true });
 				break;
 			}
 		}
@@ -138,6 +143,7 @@ function onDomReady() {
 	safely(keyboardShortcuts);
 	safely(hideTrendsBox);
 	safely(hideUselessNotifs);
+	safely(renderInlineCode);
 
 	onRouteChange(() => {
 		safely(autoLoadNewTweets);
@@ -158,6 +164,7 @@ function onDomReady() {
 		safely(codeHighlight);
 		safely(mentionHighlight);
 		safely(inlineInstagramPhotos);
+		safely(renderInlineCode);
 	});
 	safely(onDMDialogOpen);
 	safely(onDMDelete);

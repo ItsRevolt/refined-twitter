@@ -1,6 +1,6 @@
-import {h} from 'dom-chef';
+import { h } from 'dom-chef';
 import prism from 'prismjs';
-import {domify} from '../libs/utils';
+import { domify } from '../libs/utils';
 import 'prismjs/components/prism-jsx';
 import 'prismjs/components/prism-bash';
 import 'prismjs/components/prism-git';
@@ -12,6 +12,7 @@ import 'prismjs/components/prism-rust';
 import 'prismjs/components/prism-swift';
 import 'prismjs/components/prism-java';
 import 'prismjs/components/prism-python';
+import 'prismjs/components/prism-r';
 
 const aliases = new Map([
 	['js', 'javascript'],
