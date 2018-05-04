@@ -129,23 +129,25 @@ label, legend, fieldset {
 </style>
   <h3>Options</h3>
   <p>To view all settings, right click icon, then click options.</p>
+  <form id="options-form">
 	<label>
 	Hide retweeted tweets
-	<input type="checkbox" id="retweetToggleDisplay">
+	<input name="retweetToggleDisplay" type="checkbox" id="retweetToggleDisplay">
 	</label>
 	<label>
 	Hide promoted tweets
-	<input type="checkbox" id="promotedToggleDisplay">
+	<input name="promotedToggleDisplay" type="checkbox" id="promotedToggleDisplay">
 	</label>
 	<label>
 	Hide "follows" tweets
-	<input type="checkbox" id="followToggleDisplay">
+	<input name="followToggleDisplay" type="checkbox" id="followToggleDisplay">
   </label>
 	<label>
 	Hide Trends Box
-	<input type="checkbox" id="trendsBoxToggleDisplay">
+	<input name="trendsBoxToggleDisplay" type="checkbox" id="trendsBoxToggleDisplay">
 	</label>
 	<div id="status"></div>
-	<button id="save">Save</button>
+  <button id="save">Save</button>
+  </form>
 <script src="browser-polyfill.min.js"></script>
 <script src="popup.js"></script>

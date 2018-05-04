@@ -5,75 +5,14 @@ import inlineInstagramPhotos from './features/inline-instagram-photos';
 import userChoiceColor from './features/user-choice-color';
 import codeHighlight from './features/code-highlight';
 import mentionHighlight from './features/mentions-highlight';
-import addLikesButtonNavBar from './features/likes-button-navbar';
+import { likeButton, cleanNav, redirectNotifications } from './features/navbar-mods';
+import { getMomentDisplay } from './features/toggle-moment'
+import { hideLikeTweets, hidePromotedTweets, hideRetweets, hideFollows } from './features/hide-context-tweets'
+import { hideTrendsBox } from './features/hide-trends-box'
 import keyboardShortcuts from './features/keyboard-shortcuts';
 import renderInlineCode from './features/inline-code';
 import onDMDialogOpen, { getConversationId } from './features/preserve-text-messages';
-var momentToggleDisplay
-var retweetToggleDisplay
-var promotedToggleDisplay
-var trendsBoxToggleDisplay
-var followToggleDisplay
-var uselessNotifsToggleDisplay
-chrome.storage.sync.get([
-	'momentToggleDisplay',
-	'retweetToggleDisplay',
-	'promotedToggleDisplay',
-	'followToggleDisplay',
-	'trendsBoxToggleDisplay',
-	'uselessNotifsToggleDisplay'
-], function (items) {
-	momentToggleDisplay = items.momentToggleDisplay
-	retweetToggleDisplay = items.retweetToggleDisplay
-	promotedToggleDisplay = items.promotedToggleDisplay
-	followToggleDisplay = items.followToggleDisplay
-	trendsBoxToggleDisplay = items.trendsBoxToggleDisplay
-	uselessNotifsToggleDisplay = items.uselessNotifsToggleDisplay
-})
-
-function cleanNavbarDropdown() {
-	$('#user-dropdown').find('[data-nav="ads"], [data-nav="promote-mode"], [data-nav="help_center"]').parent().hide();
-}
-
-function getMomentDisplay() {
-	const momentToggle = document.querySelector('.moments');
-	momentToggle.style.display = momentToggleDisplay
-}
-
-function hideLikeTweets() {
-	$('.tweet-context .Icon--heartBadge').parents('.js-stream-item').remove();
-}
-
-function hidePromotedTweets() {
-	if (promotedToggleDisplay == true) {
-		$('.promoted-tweet').parent().remove();
-	}
-}
-
-function hideTrendsBox() {
-	if (trendsBoxToggleDisplay == true) {
-		$('.module.trends').remove()
-	}
-}
-
-function hideRetweets() {
-	if (retweetToggleDisplay == true) {
-		$('.tweet-context .Icon--retweeted').parents('.js-stream-item').remove();
-	}
-}
-
-function hideFollows() {
-	if (followToggleDisplay == true) {
-		$('.js-activity-follow').remove()
-	}
-}
-
-function hideUselessNotifs() {
-	if (uselessNotifsToggleDisplay == true) {
-		$('li.people.notifications').children('a').attr('href', 'https://twitter.com/mentions')
-		console.log($('li.people.notifications').children('a'))
-	}
-}
+import { values } from './libs/utils'
 
 function onDMDelete() {
 	observeEl('#dm_dialog', async mutations => {
@@ -108,8 +47,9 @@ async function init() {
 
 	document.documentElement.classList.add('refined-twitter');
 
-	safely(addLikesButtonNavBar);
+	safely(likeButton);
 	safely(getMomentDisplay);
+	safely(hideTrendsBox);
 
 	await domLoaded;
 	onDomReady();
@@ -139,10 +79,9 @@ function onSingleTweetOpen(cb) {
 }
 
 function onDomReady() {
-	safely(cleanNavbarDropdown);
+	safely(cleanNav);
 	safely(keyboardShortcuts);
-	safely(hideTrendsBox);
-	safely(hideUselessNotifs);
+	safely(redirectNotifications);
 	safely(renderInlineCode);
 
 	onRouteChange(() => {

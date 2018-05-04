@@ -1,34 +1,10 @@
-var momentToggleDisplayKeybind
-var nightModeToggleKeybind
-chrome.storage.sync.get([
-	'nightModeToggleKeybind',
-	'momentToggleDisplayKeybind'
-], function(items) {
-		momentToggleDisplayKeybind = items.momentToggleDisplayKeybind
-		nightModeToggleKeybind = items.nightModeToggleKeybind
-})
-const toggleNightMode = () => {
-	const nightmodeToggle = document.querySelector('.nightmode-toggle');
-	if (nightmodeToggle) {
-		nightmodeToggle.click();
-	}
-};
-const toggleMoment = () => {
-	const momentToggle = document.querySelector('.moments');
-	if (momentToggle) {
-		if (momentToggle.style.display !== "none") {
-			momentToggle.style.display = "none"
-			chrome.storage.sync.set({
-				'momentToggleDisplay': 'none',
-			})
-		} else {
-			momentToggle.style.display = "block"
-			chrome.storage.sync.set({
-				'momentToggleDisplay': 'block',
-			})
-		}
-	}
-};
+import { toggleMoment } from './toggle-moment'
+import { toggleNightMode } from './toggle-nightmode'
+import OptionsSync from 'webext-options-sync';
+var values
+new OptionsSync().getAll().then(options => {
+    values = options
+});
 
 export default () => {
 	const customShortcuts = [
@@ -38,15 +14,15 @@ export default () => {
 			shortcuts: [
 				{
 					keys: [
-						'Ctrl',
-						nightModeToggleKeybind
+						values.modifierKeybind,
+						values.nightModeToggleKeybind
 					],
 					description: 'Toggle Night Mode'
 				},
 				{
 					keys: [
-						'Ctrl',
-						momentToggleDisplayKeybind
+						values.modifierKeybind,
+						values.momentToggleDisplayKeybind
 					],
 					description: 'Toggle Moment Tab'
 				}
@@ -67,10 +43,10 @@ export default () => {
 	document.addEventListener('keydown', event => {
 		const keyName = event.key;
 		switch (keyName) {
-			case event.ctrlKey && nightModeToggleKeybind:
+			case event[values.modifierKeybind] && values.nightModeToggleKeybind:
 				toggleNightMode();
 				break;
-			case event.ctrlKey && momentToggleDisplayKeybind:
+			case event[values.modifierKeybind] && values.momentToggleDisplayKeybind:
 				toggleMoment();
 				break;
 			default:

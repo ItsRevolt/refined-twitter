@@ -8,6 +8,7 @@ module.exports = {
 	entry: {
 		content: './source/content',
 		background: './source/background',
+		optionsInit: './source/optionsInit',
 		options: './source/options',
 		popup: './source/popup'
 	},

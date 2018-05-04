@@ -28,6 +28,7 @@
 	"background": {
 		"scripts": [
 			"browser-polyfill.min.js",
+			"optionsInit.js",
 			"background.js"
 		]
 	},

@@ -1,6 +1,6 @@
 {
 	"name": "Refined-Twitter-Fork",
-	"version": "0.2.3",
+	"version": "0.2.4",
 	"description": "A fork of Refined Twitter. Simplifies the Twitter interface and adds useful features.",
 	"homepage_url": "https://refined-twitter-fork.netlify.com",
 	"manifest_version": 2,
@@ -28,6 +28,7 @@
 	"background": {
 		"scripts": [
 			"browser-polyfill.min.js",
+			"optionsInit.js",
 			"background.js"
 		]
 	},

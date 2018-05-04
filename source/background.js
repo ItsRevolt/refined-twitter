@@ -1,24 +1,8 @@
-import OptionsSync from 'webext-options-sync';
-
-chrome.runtime.onInstalled.addListener(function (details) {
-	if (details.reason == "install") {
-		chrome.storage.sync.set({
-			'nightModeToggleKeybind': 'b',
-			'momentToggleDisplayKeybind': 'm',
-			'retweetToggleDisplay': false,
-			'promotedToggleDisplay': true,
-			'followToggleDisplay': true,
-			'originalImageToggleDisplay': true,
-			'trendsBoxToggleDisplay': false
-		})
-	}
-})
 var originalImageToggleDisplay
-chrome.storage.sync.get([
-	'originalImageToggleDisplay'
-], function (items) {
-	originalImageToggleDisplay = items.originalImageToggleDisplay
-})
+import OptionsSync from 'webext-options-sync';
+new OptionsSync().getAll().then(options => {
+    originalImageToggleDisplay = options.originalImageToggleDisplay
+});
 
 browser.downloads.onDeterminingFilename.addListener((item, suggest) => {
 	suggest({

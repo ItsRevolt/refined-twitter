@@ -2,6 +2,7 @@ import { h } from 'dom-chef';
 import select from 'select-dom';
 import elementReady from 'element-ready';
 import domLoaded from 'dom-loaded';
+import OptionsSync from 'webext-options-sync';
 
 /**
  * Prevent fn's errors from blocking the remaining tasks.

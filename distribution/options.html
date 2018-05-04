@@ -182,45 +182,55 @@
 </style>
 <h3>Keybinds</h3>
 <p class="sub">See keybinds while on Twitter by pressing 'shift + ?'</p>
+<form id="options-form">
+<label>
+  Modifier Keybind
+  <select name="modifierKeybind" id="modifierKeybind">
+    <option value="ctrlKey">Ctrl</option>
+    <option value="altKey">Alt</option>
+    <option value="shiftKey">Shift</option>
+  </select>
+</label>
 <label>
   Night Mode
-  <input id="nightModeToggleKeybind">
+  <input name="nightModeToggleKeybind" id="nightModeToggleKeybind">
 </label>
 <label>
   Moment Tab
-  <input id="momentToggleDisplayKeybind">
+  <input name="momentToggleDisplayKeybind" id="momentToggleDisplayKeybind">
 </label>
 <br>
 <h3>Display</h3>
 <label>
   Hide retweeted tweets
-  <input type="checkbox" id="retweetToggleDisplay">
+  <input name="retweetToggleDisplay" type="checkbox" id="retweetToggleDisplay">
 </label>
 <label>
   Hide promoted tweets
-  <input type="checkbox" id="promotedToggleDisplay">
+  <input name="promotedToggleDisplay" type="checkbox" id="promotedToggleDisplay">
 </label>
 <label>
   Hide "follows" tweets
-  <input type="checkbox" id="followToggleDisplay">
+  <input name="followToggleDisplay" type="checkbox" id="followToggleDisplay">
 </label>
 <label>
   Show only mentions instead of all notifications by default
-  <input type="checkbox" id="uselessNotifsToggleDisplay">
+  <input name="uselessNotifsToggleDisplay" type="checkbox" id="uselessNotifsToggleDisplay">
 </label>
 <br>
 <h3>Other</h3>
 <label>
   Hide Trends Box
-  <input type="checkbox" id="trendsBoxToggleDisplay">
+  <input name="trendsBoxToggleDisplay" type="checkbox" id="trendsBoxToggleDisplay">
 </label>
 <label>
   Use original HD images
-  <input type="checkbox" id="originalImageToggleDisplay">
+  <input name="originalImageToggleDisplay" type="checkbox" id="originalImageToggleDisplay">
 </label>
 <p class="sub">Uncheck for slow internet</p>
 <div id="status"></div>
 <button id="save">Save</button>
+</form>
 <p>Refresh Twitter after making changes</p>
 <script src="browser-polyfill.min.js"></script>
 <script src="options.js"></script>
