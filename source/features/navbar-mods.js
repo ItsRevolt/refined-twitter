@@ -26,7 +26,8 @@ export const likeButton = async () => {
 
 export const redirectNotifications = () => {
 	if (values.uselessNotifsToggleDisplay == true) {
-		$('li.people.notifications').children('a').attr('href', 'https://twitter.com/mentions')
+		const notifications = document.querySelector('li.people.notifications a')
+		notifications.setAttribute('href', 'https://twitter.com/mentions')
 	}
 }
 

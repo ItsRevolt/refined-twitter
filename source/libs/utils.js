@@ -52,15 +52,58 @@ export const getUsername = () => document.querySelector('.DashUserDropdown-userI
 
 export const isModalOpen = () => {
 	function isVis(ele) {
-		if (ele.css('display') != 'none' && ele.css('visibility') != 'hidden' && ele.height() > 0) {
+		if (ele.style.display != 'none' && ele.style.visibility != 'hidden' && ele.offsetHeight > 0) {
 			return (true);
 		} else {
 			return (false);
 		}
 	}
 
-	const hasPermalinkOverlay = isVis($('#permalink-overlay'))
-	const isDMModalOpen = isVis($('#dm_dialog'))
+	const hasPermalinkOverlay = isVis(document.querySelector('#permalink-overlay'))
+	const isDMModalOpen = isVis(document.querySelector('#dm_dialog'))
 
 	return hasPermalinkOverlay || isDMModalOpen;
 };
+
+/**
+ * Get all of an element's parent elements up the DOM tree
+ * @param  {Node}   elem     The element
+ * @param  {String} selector Selector to match against [optional]
+ * @return {Array}           The parent elements
+ */
+export const getParents = (elem, selector) => {
+	// Element.matches() polyfill
+	if (!Element.prototype.matches) {
+		Element.prototype.matches =
+			Element.prototype.matchesSelector ||
+			Element.prototype.mozMatchesSelector ||
+			Element.prototype.msMatchesSelector ||
+			Element.prototype.oMatchesSelector ||
+			Element.prototype.webkitMatchesSelector ||
+			function(s) {
+				var matches = (this.document || this.ownerDocument).querySelectorAll(s),
+					i = matches.length;
+				while (--i >= 0 && matches.item(i) !== this) {}
+				return i > -1;
+			};
+	}
+
+	// Setup parents array
+	var parents = [];
+
+	// Get matching parent elements
+	for ( ; elem && elem !== document; elem = elem.parentNode ) {
+
+		// Add matching parents to array
+		if ( selector ) {
+			if ( elem.matches( selector ) ) {
+				parents.push( elem );
+			}
+		} else {
+			parents.push( elem );
+		}
+
+	}
+
+	return parents;
+}

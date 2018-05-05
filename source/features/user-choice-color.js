@@ -1,6 +1,6 @@
 export default () => {
 	const html = document.querySelector('html');
-	const newTweetButton = document.querySelector('#global-new-tweet-button');
+	const newTweetButton = document.getElementById('global-new-tweet-button');
 
 	if (html && newTweetButton) {
 		const bgColor = window.getComputedStyle(newTweetButton).backgroundColor;

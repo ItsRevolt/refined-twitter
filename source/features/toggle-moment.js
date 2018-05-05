@@ -5,7 +5,9 @@ new OptionsSync().getAll().then(options => {
 });
 export const getMomentDisplay = () => {
 	const momentToggle = document.querySelector('.moments');
+	if (momentToggle) {
 	momentToggle.style.display = values.momentToggleDisplay
+	}
 }
 
 export const toggleMoment = () => {

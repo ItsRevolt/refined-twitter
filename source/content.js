@@ -22,13 +22,13 @@ function onDMDelete() {
 		for (const mutation of mutations) {
 			if (mutation.target.id === 'confirm_dialog') {
 				const conversationId = getConversationId();
-				$('#confirm_dialog_submit_button').on('click', () => {
+				document.getElementById('confirm_dialog_submit_button').addEventListener('click', function () {
 					for (const id in savedMessages) {
 						if (conversationId === id) {
 							pendingRemoval.push(browser.storage.local.remove(conversationId));
 						}
 					}
-				});
+				  });
 
 				break;
 			}
@@ -103,7 +103,6 @@ function onDomReady() {
 		safely(codeHighlight);
 		safely(mentionHighlight);
 		safely(inlineInstagramPhotos);
-		safely(renderInlineCode);
 	});
 	safely(onDMDialogOpen);
 	safely(onDMDelete);

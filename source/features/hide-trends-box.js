@@ -5,6 +5,7 @@ new OptionsSync().getAll().then(options => {
 });
 export const hideTrendsBox = () => {
 	if (values.trendsBoxToggleDisplay == true) {
-		$('.module.trends').remove()
+		var el = document.querySelector('.module.trends')
+		el.parentNode.removeChild(el)
 	}
 }

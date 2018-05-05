@@ -188,7 +188,6 @@
   <select name="modifierKeybind" id="modifierKeybind">
     <option value="ctrlKey">Ctrl</option>
     <option value="altKey">Alt</option>
-    <option value="shiftKey">Shift</option>
   </select>
 </label>
 <label>
@@ -214,11 +213,19 @@
   <input name="followToggleDisplay" type="checkbox" id="followToggleDisplay">
 </label>
 <label>
+  Hide "likes" tweets
+  <input name="likeToggleDisplay" type="checkbox" id="likeToggleDisplay">
+  </label>
+<label>
   Show only mentions instead of all notifications by default
   <input name="uselessNotifsToggleDisplay" type="checkbox" id="uselessNotifsToggleDisplay">
 </label>
 <br>
 <h3>Other</h3>
+<label>
+  Time To Auto Load Tweets (Seconds)
+  <input name="autoLoadTweetTime" type="number" id="autoLoadTweetTime">
+</label>
 <label>
   Hide Trends Box
   <input name="trendsBoxToggleDisplay" type="checkbox" id="trendsBoxToggleDisplay">
@@ -229,8 +236,8 @@
 </label>
 <p class="sub">Uncheck for slow internet</p>
 <div id="status"></div>
-<button id="save">Save</button>
 </form>
+<button id="save">Save</button>
 <p>Refresh Twitter after making changes</p>
 <script src="browser-polyfill.min.js"></script>
 <script src="options.js"></script>

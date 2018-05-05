@@ -73,12 +73,13 @@ function splitTextReducer(frag, text, index) {
 export default function () {
 	// Regex needs to be non-capturing ?: and to have the extra () to work with .split
 	const splittingRegex = /((?:```\w*[\s\S]+```\n?))/g;
-	$('.tweet-text').each((i, el) => {
+	var elements = document.querySelectorAll('.tweet-text')
+	Array.prototype.forEach.call(elements, function(el, i){
 		const tweetWithCode = el.textContent.split(splittingRegex);
 		if (tweetWithCode.length === 1) {
 			return;
 		}
 		const frag = tweetWithCode.reduce(splitTextReducer, new DocumentFragment());
-		$(el).html(frag);
+		el.innerHTML = frag
 	});
 }

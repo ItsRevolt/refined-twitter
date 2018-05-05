@@ -42,7 +42,7 @@ function onDMOpen() {
 		for (const mutation of mutations) {
 			if (mutation.target.classList.contains('DMActivity--open')) {
 				conversationId = getConversationId();
-				messageContainer = $('#tweet-box-dm-conversation');
+				messageContainer = document.getElementById('tweet-box-dm-conversation')
 				if (conversationId) {
 					onMessageChange(messageContainer);
 				}
@@ -59,9 +59,9 @@ async function fetchStoredMessage(conversationId, messageContainer) {
 		const {[conversationId]: savedMessage} = await browser.storage.local.get(conversationId);
 
 		if (savedMessage && !isEmptyMsgInput(savedMessage)) {
-			messageContainer.empty();
-			messageContainer.append(savedMessage);
-			setCursorToEnd(messageContainer[0]);
+			messageContainer.innerHTML = ''
+			messageContainer.innerHTML = savedMessage
+			setCursorToEnd(messageContainer.childNodes[0]);
 		}
 	} catch (e) {
 			console.error(
@@ -80,7 +80,7 @@ function onMessageChange(messageContainer) {
 
 	observeEl('#tweet-box-dm-conversation', debounce(async () => {
 		const conversationId = getConversationId();
-		const currentMessage = messageContainer.html();
+		const currentMessage = messageContainer.innerHTML
 		const message = {
 			[conversationId]: currentMessage
 		};
@@ -92,7 +92,7 @@ function onMessageChange(messageContainer) {
 				console.error(`Error in storing ${conversationId}'s message`);
 			}
 		}
-	}, 150), messageOptions);
+	}, 400), messageOptions);
 }
 
 // See: https://gist.github.com/al3x-edge/1010364
