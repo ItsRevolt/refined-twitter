@@ -3,3 +3,4 @@ yarn.lock
 key.pem
 readme.md
 distribution
+.env

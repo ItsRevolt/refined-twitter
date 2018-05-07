@@ -30,8 +30,3 @@ export const redirectNotifications = () => {
 		notifications.setAttribute('href', 'https://twitter.com/mentions')
 	}
 }
-
-export const cleanNav = async () => {
-    const userDropdown = await safeElementReady('#user-dropdown');
-	$(userDropdown).find('[data-nav="ads"], [data-nav="promote-mode"], [data-nav="help_center"]').parent().hide();
-}

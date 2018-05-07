@@ -1,6 +1,6 @@
-import { h } from 'dom-chef';
+import {h} from 'dom-chef';
 import prism from 'prismjs';
-import { domify } from '../libs/utils';
+import {domify} from '../libs/utils';
 import 'prismjs/components/prism-jsx';
 import 'prismjs/components/prism-bash';
 import 'prismjs/components/prism-git';
@@ -44,8 +44,7 @@ function highlightCode(md) {
 		);
 	}
 
-	var highlightedCode = prism.highlight(code, prism.languages[selectedLang]);
-
+	const highlightedCode = prism.highlight(code, prism.languages[selectedLang]);
 
 	return (
 		<div class="refined-twitter_highlight">
@@ -73,13 +72,12 @@ function splitTextReducer(frag, text, index) {
 export default function () {
 	// Regex needs to be non-capturing ?: and to have the extra () to work with .split
 	const splittingRegex = /((?:```\w*[\s\S]+```\n?))/g;
-	var elements = document.querySelectorAll('.tweet-text')
-	Array.prototype.forEach.call(elements, function(el, i){
+	$('.tweet-text').each((i, el) => {
 		const tweetWithCode = el.textContent.split(splittingRegex);
 		if (tweetWithCode.length === 1) {
 			return;
 		}
 		const frag = tweetWithCode.reduce(splitTextReducer, new DocumentFragment());
-		el.innerHTML = frag
+		$(el).html(frag);
 	});
 }

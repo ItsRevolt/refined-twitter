@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import domLoaded from 'dom-loaded';
 import { observeEl, safeElementReady, safely } from './libs/utils';
 import autoLoadNewTweets from './features/auto-load-new-tweets';
@@ -5,7 +6,7 @@ import inlineInstagramPhotos from './features/inline-instagram-photos';
 import userChoiceColor from './features/user-choice-color';
 import codeHighlight from './features/code-highlight';
 import mentionHighlight from './features/mentions-highlight';
-import { likeButton, cleanNav, redirectNotifications } from './features/navbar-mods';
+import { likeButton, redirectNotifications } from './features/navbar-mods';
 import { getMomentDisplay } from './features/toggle-moment'
 import { hideLikeTweets, hidePromotedTweets, hideRetweets, hideFollows } from './features/hide-context-tweets'
 import { hideTrendsBox } from './features/hide-trends-box'
@@ -79,7 +80,6 @@ function onSingleTweetOpen(cb) {
 }
 
 function onDomReady() {
-	safely(cleanNav);
 	safely(keyboardShortcuts);
 	safely(redirectNotifications);
 	safely(renderInlineCode);

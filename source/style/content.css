@@ -49,6 +49,11 @@ body:not(.NotificationsPage) .tweet.refined-twitter_mention:not(.permalink-tweet
 	background-color: rgba(var(--refined-twitter_bgcolor-values), 0.2);
 }
 
+/* Remove bottom border on nav items */
+#global-actions>li>a {
+	border-bottom: 0px !important;
+}
+
 /**
 
 Dashboard

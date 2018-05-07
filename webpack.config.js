@@ -3,6 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
 	entry: {
@@ -30,7 +31,8 @@ module.exports = {
 			title: "My Project Webpack Build",
 			logo: path.resolve("./source/icon2.png"),
 			suppressSuccess: false
-		  })
+		  }),
+		  new Dotenv()
 	],
 	output: {
 		path: path.join(__dirname, 'distribution'),
