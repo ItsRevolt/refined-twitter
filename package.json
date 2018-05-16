@@ -5,6 +5,7 @@
     "test": "jest --runInBand"
   },
   "dependencies": {
+    "cash-dom": "^2.1.3",
     "dom-chef": "^3.0.0",
     "dom-loaded": "^1.0.0",
     "dotenv-webpack": "^1.5.5",

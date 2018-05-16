@@ -43,7 +43,7 @@
 				"style/code-highlight.css"
 			],
 			"js": [
-				"zepto.min.js",
+				"cash.min.js",
 				"browser-polyfill.min.js",
 				"content.js"
 			]

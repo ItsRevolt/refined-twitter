@@ -25,7 +25,7 @@ module.exports = {
 		}, {
 			from: 'node_modules/webextension-polyfill/dist/browser-polyfill.min.js'
 		}, {
-			from: 'node_modules/zepto/dist/zepto.min.js'
+			from: 'node_modules/cash-dom/dist/cash.min.js'
 		}]),
 		new WebpackBuildNotifierPlugin({
 			title: "Refined Twitter Fork",
