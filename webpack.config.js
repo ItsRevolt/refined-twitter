@@ -28,11 +28,11 @@ module.exports = {
 			from: 'node_modules/zepto/dist/zepto.min.js'
 		}]),
 		new WebpackBuildNotifierPlugin({
-			title: "My Project Webpack Build",
+			title: "Refined Twitter Fork",
 			logo: path.resolve("./source/icon2.png"),
 			suppressSuccess: false
-		  }),
-		  new Dotenv()
+		}),
+		new Dotenv()
 	],
 	output: {
 		path: path.join(__dirname, 'distribution'),
