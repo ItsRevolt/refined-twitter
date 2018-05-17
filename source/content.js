@@ -12,6 +12,7 @@ import { hideLikeTweets, hidePromotedTweets, hideRetweets, hideFollows } from '.
 import { hideTrendsBox } from './features/hide-trends-box'
 import keyboardShortcuts from './features/keyboard-shortcuts';
 import renderInlineCode from './features/inline-code';
+import { showMentionsTip } from './features/mentions-default-tip'
 import onDMDialogOpen, { getConversationId } from './features/preserve-text-messages';
 import { values } from './libs/utils'
 
@@ -87,6 +88,7 @@ function onDomReady() {
 	onRouteChange(() => {
 		safely(autoLoadNewTweets);
 		safely(userChoiceColor);
+		safely(showMentionsTip);
 
 		onNewTweets(() => {
 			safely(codeHighlight);

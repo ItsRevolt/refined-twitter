@@ -1,4 +1,3 @@
-// Saves options to chrome.storage
 import OptionsSync from 'webext-options-sync';
 new OptionsSync().syncForm(document.querySelector('form#options-form'));
 function save_options() {
