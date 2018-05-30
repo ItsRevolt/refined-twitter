@@ -7,6 +7,7 @@ new OptionsSync().getAll().then(options => {
 
 export const showMentionsTip = async () => {
     if (values.uselessNotifsToggleDisplay == true) {
+        if (document.body.classList.contains('NotificationsPage')) {
 	const header = $('.ProfileHeading-toggle')
 
 	header.append(
@@ -15,6 +16,7 @@ export const showMentionsTip = async () => {
                  Only Mentions Are Shown By default <a href="">(?)</a>
             </p>
         </li>
-    )
-}
+            )
+        }
+    }
 }

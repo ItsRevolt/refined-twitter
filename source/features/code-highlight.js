@@ -77,7 +77,7 @@ export default function () {
 	// Regex needs to be non-capturing ?: and to have the extra () to work with .split
 	const splittingRegex = /((?:```\w*[\s\S]+```\n?))/g;
 	$('.tweet-text').each((i, el) => {
-		const tweetWithCode = el.innerHTML.split(splittingRegex);
+		const tweetWithCode = el.textContent.split(splittingRegex);
 		if (tweetWithCode.length === 1) {
 			return;
 		}
